@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "nicephotos-stg": {
+      "hosting": {
+        "AccountNicephotos": [
+          "nicephotos-stg"
+        ]
+      }
+    }
+  }
+}

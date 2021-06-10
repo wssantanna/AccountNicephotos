@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="banner col-12 col-xl-4 p-0 d-none d-xl-block">
+            <figure>
+                <a [href]="bannerUri" target="_blank">
+                    <img width="100%" height="auto" src="assets/images/offer.jpg" alt="Banner Desktop">
+                </a>
+                <figcaption class="sr-only">Descrição do Banner Desktop</figcaption>
+            </figure>
+        </div>
+        <div class="col-12 col-xl-8 p-0">
+            <figure class="p-3 m-0">
+                <a [href]="homeUri">
+                    <img class="d-none d-sm-block mx-auto" width="261" height="50" src="assets/images/nicephotos.png"
+                        alt="Logo versão Desktop Nicephotos">
+                    <img class="d-block d-sm-none mx-auto" width="90" height="25"
+                        src="assets/images/nicephotos-mobile.png" alt="Logo versão Mobile Nicephotos">
+                    <figcaption class="sr-only">Logo da Empresa Nicephotos.</figcaption>
+                </a>
+            </figure>
+            <figure class="d-block d-xl-none">
+                <a [href]="bannerUri" target="_blank">
+                    <img width="100%" height="auto" src="assets/images/offer-mobile.jpg" alt="Banner Mobile">
+                </a>
+                <figcaption class="sr-only">Descrição do Banner Desktop</figcaption>
+            </figure>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

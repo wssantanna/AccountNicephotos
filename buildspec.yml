@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+
+  install:
+    runtime-versions:
+      nodejs: 12
+      
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - cd account && npm install
+      
+  build:
+    commands:
+      - echo Build started on `date` for environment $ENVIRONMENT
+      - npm run prerender --configuration=$ENVIRONMENT
+      
+artifacts:
+  base-directory: 'dist'  
+  files:
+      - '**/*'
+
+cache:
+  paths:
+    - 'account/node_modules/**/*' 

@@ -1,0 +1,104 @@
+<div class="p-2 p-md-5">
+    <header class="text-center">
+        <h1 class="h3 font-weight-normal">Bem-vindo a <span class="text-primary">Nicephotos!</span></h1>
+        <p class="text-primary">
+            Já possui uma conta? <a class="text-secondary" routerLink="/autenticar"
+                [queryParams]="{url_destino:urlDest}">Faça seu login clicando aqui.</a>
+        </p>
+    </header>
+    <form class="container" [formGroup]="signUp" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="sr-only" for="nome">Nome</label>
+                    <input formControlName="nome" class="form-control form-control-lg" id="nome" name="nome" type="text"
+                        placeholder="Digite seu nome">
+                    <ng-container *ngIf="checkValidAndTouchedField('nome')">
+                        <span *ngIf="signUp.get('nome').errors.required" class="text-danger">Campo obrigatório</span>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label class="sr-only" for="email">E-mail</label>
+                    <input formControlName="email" class="form-control form-control-lg" id="email" name="email"
+                        type="email" placeholder="Digite seu e-mail">
+                    <ng-container *ngIf="checkValidAndTouchedField('email')">
+                        <span *ngIf="signUp.get('email').errors.required" class="text-danger">Campos obrigatórios</span>
+                        <span *ngIf="signUp.get('email').errors.email" class="text-danger">O endereço de e-mail não é
+                            válido</span>
+                    </ng-container>
+                    <ng-container *ngIf="getFormError()">
+                        <span class="text-danger">{{ getFormError() }}</span>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label class="sr-only" for="email2">Confirmar E-mail</label>
+                    <input class="form-control form-control-lg" id="email2" name="email2" type="email2"
+                        placeholder="Confirme seu e-mail">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label class="sr-only" for="senha">Senha</label>
+                    <input formControlName="senha" class="form-control form-control-lg" id="senha" name="senha"
+                        type="password" placeholder="Digite sua senha">
+                    <ng-container *ngIf="checkValidAndTouchedField('senha')">
+                        <span *ngIf="signUp.get('senha').errors.required" class="text-danger">Campo obrigatório</span>
+                        <span *ngIf="signUp.get('senha').errors.minLength" class="text-danger">...</span>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label class="sr-only" for="dtNascimento">Data nascimento</label>
+                    <input formControlName="dtNascimento" class="form-control form-control-lg" id="dtNascimento"
+                        name="dtNascimento" (keypress)="formatDateToPt($event);" type="text"
+                        placeholder="Data de nascimento (dd/mm/aaaa)">
+                    <ng-container *ngIf="checkValidAndTouchedField('dtNascimento')">
+                        <span *ngIf="signUp.get('dtNascimento').errors.required" class="text-danger">Campo
+                            obrigatório</span>
+                        <span *ngIf="signUp.get('dtNascimento').errors.pattern" class="text-danger">Formato da data
+                            inválido</span>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <re-captcha formControlName="recaptcha" (resolved)="getTokenRecaptcha($event)" [siteKey]="siteKey">
+                </re-captcha>
+            </div>
+            <div class="col-12">
+                <p class="text-center">Quero receber ofertas da Nicephotos por:</p>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <div class="form-check mx-2">
+                    <label class="form-check-label" for="receberEmail">
+                        E-mail
+                    </label>
+                    <input formControlName="receberEmail" class="form-check-input" type="checkbox" id="receberEmail">
+                </div>
+                <div class="form-check mx-2">
+                    <label class="form-check-label" for="receberSms">
+                        SMS
+                    </label>
+                    <input formControlName="receberSms" class="form-check-input" type="checkbox" id="receberSms">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-block btn-primary my-4" type="submit" [disabled]="isValidForm()">Finalizar
+            Cadastro</button>
+        <div class="row">
+            <footer class="col-12">
+                <p class="text-center">Seus dados pessoais serão respeitados de acordo com a nossa <a
+                        class="text-primary" routerLink="/privacidade" target="_blank"
+                        alt="Política de Privacidade">Política
+                        de
+                        Privacidade</a>. Ao
+                    prosseguir com o cadastro você concorda com a política e os <a class="text-primary"
+                        routerLink="/termos" target="_blank" alt="Termos de Serviço">Termos de Serviço</a>.</p>
+            </footer>
+        </div>
+    </form>
+</div>

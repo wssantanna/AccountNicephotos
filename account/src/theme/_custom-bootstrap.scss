@@ -1,0 +1,58 @@
+// Custom Variables Bootstrap
+@import 'variables.scss';
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Custom Teming Bootstrap
+@import 'colors';
+
+// Custom Typography Bootstrap
+@import 'typography';
+
+// Optional Bootstrap
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/code";
+@import "../../node_modules/bootstrap/scss/grid";
+
+// Utilities Bootstrap
+@import "../../node_modules/bootstrap/scss/utilities";
+
+// Components Bootstrap
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+
+// Custom Components Bootstrap
+.form {
+
+    &-group {
+        margin-bottom: .5rem;
+    }
+
+    &-control-lg {
+        border-radius: 0;
+        height: calc(1.5rem + 2rem + 2px);
+    }
+    
+    &-check {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        &-label {
+            font-size: 1.25rem;
+            margin-right: 25px;
+        }
+
+        &-input {
+            position: static;
+            height: 25px;
+            width: 25px;
+        }
+    }
+    
+}

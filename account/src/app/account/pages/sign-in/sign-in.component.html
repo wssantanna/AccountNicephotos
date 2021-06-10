@@ -1,0 +1,54 @@
+<div class="p-2 p-md-5">
+    <header class="text-center">
+        <h1 class="h3 font-weight-normal">Bem-vindo ao Nicephotos!</h1>
+        <p class="text-primary">
+            Ainda não possui uma conta? <a class="text-secondary" routerLink="/cadastrar"
+                [queryParams]="{url_destino:urlDest}">Faça
+                seu cadastro clicando
+                aqui.</a>
+        </p>
+    </header>
+    <form class="container mt-3" [formGroup]="signIn" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="sr-only" for="email">E-mail</label>
+                    <input formControlName="email" class="form-control form-control-lg" id="email" type="email"
+                        placeholder="Digite seu e-mail">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="sr-only" for="senha">Senha</label>
+                    <input formControlName="senha" class="form-control form-control-lg" id="senha" type="password"
+                        placeholder="Digite sua senha">
+                </div>
+            </div>
+            <ng-container *ngIf="getFormError()">
+                <div class="col-12 mt-1 mb-3">
+                    <span class="text-danger">{{ getFormError() }}</span>
+                </div>
+            </ng-container>
+            <div class="col-12">
+                <p>
+                    <a class="text-primary" routerLink="/recuperar-senha">Esqueci minha senha</a>
+                </p>
+                <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="isValidForm()">Fazer
+                    Login</button>
+                <hr class="fa-or mt-4">
+            </div>
+            <div class="col-12 col-lg-6 px-3 pr-lg-1 pl-lg-3 py-2 py-lg-0">
+                <button class="btn btn-lg btn-block btn-facebook d-flex justify-content-center" type="button"
+                    (click)="authenticateWithFacebook()">
+                    <i class="fa-facebook mr-2"></i> Entrar com Facebook
+                </button>
+            </div>
+            <div class="col-12 col-lg-6 px-3 pl-lg-1 pl-lg-3 py-2 py-lg-0">
+                <button class="btn btn-lg btn-block btn-white border d-flex justify-content-center" type="button"
+                    (click)="authenticateWithGoogle()">
+                    <i class="fa-google mr-2"></i> Entrar com Google
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
